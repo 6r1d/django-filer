@@ -119,6 +119,8 @@ class FilerFolderField(models.ForeignKey):
                 )
                 warnings.warn(msg, SyntaxWarning)
         kwargs['to'] = dfl
+        # We hard-code the `on_delete` argument for ForeignKey.__init__
+        kwargs['on_delete'] = models.CASCADE
         super(FilerFolderField, self).__init__(**kwargs)
 
     def formfield(self, **kwargs):
